@@ -24,6 +24,6 @@
     "typescript": "^5"
   },
   "pnpm": {
-    "minimumReleaseAge": 0
+    "minimumReleaseAge": 30
   }
 }
