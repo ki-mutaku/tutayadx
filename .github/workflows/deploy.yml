@@ -41,7 +41,7 @@ jobs:
           path: ./out
 
   deploy:
-    needs: Build
+    needs: build
 
     runs-on: ubuntu-latest
 
