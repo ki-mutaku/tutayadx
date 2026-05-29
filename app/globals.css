@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f0f8ff; /* AliceBlue for a light sea vibe */
+  --foreground: #0f172a; /* slate-900 */
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #001220; /* Deep sea dark blue */
+    --foreground: #f8fafc; /* slate-50 */
   }
 }
 
@@ -23,4 +23,72 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Sea Gradient Background */
+.sea-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.1), transparent 50%),
+              radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sea-bg {
+    background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.15), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(2, 132, 199, 0.15), transparent 50%);
+  }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Wave animation */
+@keyframes wave {
+  0% {
+    border-radius: 40% 60% 60% 40% / 40% 50% 50% 60%;
+  }
+  50% {
+    border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;
+  }
+  100% {
+    border-radius: 40% 60% 60% 40% / 40% 50% 50% 60%;
+  }
+}
+
+.animate-wave {
+  animation: wave 6s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.animate-wave:hover {
+  transform: scale(1.05);
+}
+
+/* Hide scrollbar for carousel but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
